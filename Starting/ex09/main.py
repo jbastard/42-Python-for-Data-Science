@@ -1,6 +1,5 @@
 from subprocess import Popen
 from time import sleep
-import os
 from sys import argv
 from tqdm import tqdm
 
@@ -27,17 +26,41 @@ def uninstall(log: bool):
     proc.wait()
 
 
+def install(log: bool):
+    uninstall(log)
+    build(log)
+    cmd = "pip install ./dist/ft_package-0.0.1.tar.gz"
+    if not log:
+        cmd += " > /dev/null 2>&1"
+
+    proc = Popen(cmd, shell=True)
+    if log:
+        proc.wait()
+        return
+
+    for i in tqdm(range(100), total=100, desc="Installing ft_package "):
+        sleep(0.015)
+        if i == 100:
+            proc.wait()
+
+
+def show(log: bool):
+    install(log)
+    try:
+        cmd = "pip show -v ft_package"
+        proc = Popen(cmd, shell=True)
+        proc.wait()
+    except Exception as e:
+        print(f"{type(e).__name__}: {e}")
+
+
 def main():
     callable_func = {
         "build": build,
-        # "install": install,
-        # "show": show,
-        # "test": test,
+        "install": install,
         "uninstall": uninstall,
-        # "full_install": full_install,
-        # "full_run": full_run,
-        # "re": re,
-        # "re_test": re_test
+        "show": show,
+        # "test": test,
     }
     try:
         verbose_mode = False
