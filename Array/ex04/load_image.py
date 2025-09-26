@@ -29,7 +29,6 @@ def ft_load(path: str):
             arr = np.array(rgb_img)
 
         print(f"Image format: {img_format}")
-        print(f"The shape of image is: {arr.shape}")
         return arr
 
     except Exception as e:

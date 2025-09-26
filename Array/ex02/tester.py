@@ -1,3 +1,3 @@
 from load_image import ft_load
 
-print(ft_load("test.txt"))
+print(ft_load("landscape.jpg"))
