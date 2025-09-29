@@ -1,5 +1,5 @@
 from PIL import Image
-from numpy import array, empty
+from numpy import array
 
 
 def ft_invert(array_img) -> array:
@@ -47,7 +47,9 @@ def ft_grey(array_img):
     h, w, c = array_img.shape
     for i in range(h):
         for j in range(w):
-            grey = (int(array_img[i, j, 0]) + int(array_img[i, j, 1]) + int(array_img[i, j, 2])) / 3
+            grey = (int(array_img[i, j, 0])
+                    + int(array_img[i, j, 1])
+                    + int(array_img[i, j, 2])) / 3
             array_img[i, j, 0] = grey
             array_img[i, j, 1] = grey
             array_img[i, j, 2] = grey

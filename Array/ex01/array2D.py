@@ -1,15 +1,15 @@
 def slice_me(family: list, start: int, end: int) -> list:
     """Slices a 2D list (family) from start to end index
     and returns the sliced list.
-    
+
     Args:
         family (list): 2D list to slice
         start (int): Starting index for slicing
         end (int): Ending index for slicing
-    
+
     Returns:
         list: Sliced 2D list from start to end index
-        
+
     Raises:
         TypeError: If input types are incorrect
         AssertionError: If family is not a square matrix

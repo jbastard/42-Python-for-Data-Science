@@ -2,6 +2,7 @@ from PIL import Image
 import numpy as np
 import os
 
+
 def ft_load(path: str):
     """Load an image from a file path and convert it to a numpy array.
 
@@ -29,7 +30,6 @@ def ft_load(path: str):
 
         print(f"Image format: {img_format}")
         print(f"The shape of image is: {arr.shape}")
-        return arr
-
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
+    return arr

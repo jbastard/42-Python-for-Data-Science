@@ -4,7 +4,7 @@ from load_image import ft_load
 
 
 def rgb2gray(rgb):
-    return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
+    return np.dot(rgb[..., :3], [0.2989, 0.5870, 0.1140])
 
 
 def zoom(arr_img, x, y):
@@ -19,6 +19,7 @@ def transpose(arr_img):
             new_image[j, i] = arr_img[i, j]
     return new_image
 
+
 def main():
     img = ft_load("animal.jpeg")
 
@@ -30,7 +31,6 @@ def main():
 
     Image.fromarray(transposed).show()
 
-    return
 
 if __name__ == "__main__":
     main()
