@@ -1,17 +1,14 @@
-import sys
+from sys import argv
 
 try:
-    assert len(sys.argv) == 2, "Usage: python whatis.py <int>"
+    if not len(argv) == 2:
+        raise AssertionError("Usage: python whatis.py <int>")
 
-    num = int(sys.argv[1])
-    assert isinstance(num, int), "Argument must be an integer."
+    if not argv[1].isdigit():
+        raise AssertionError("Argument must be an integer.")
+    num = int(argv[1])
 
-    if num % 2 == 0:
-        print("I'm Even.")
-    else:
-        print("I'm Odd.")
+    print("I'm Odd." if num % 2 else "I'm Even.")
 
-except ValueError:
-    print("Argument must be an integer.")
-except AssertionError as error:
-    print(error)
+except AssertionError as e:
+    print(f"{type(e).__name__}: {e}")

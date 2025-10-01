@@ -10,12 +10,13 @@ def main():
 
     try:
         if (len(argv) != 3
-                or not isinstance(argv[1], str)
                 or not argv[2].isdigit()):
             raise AssertionError("python3 filterstring.py <string> <int>")
         N = int(argv[2])
+
         base_list = argv[1].split()
         print(list(ft_filter(lambda s: len(s) > N, base_list)))
+
     except Exception as error:
         print(f"{type(error).__name__}: {error}")
 

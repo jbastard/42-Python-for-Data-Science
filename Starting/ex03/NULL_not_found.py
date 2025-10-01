@@ -1,4 +1,9 @@
-def NULL_not_found(object: any) -> int:
+no_arg = object()
+
+
+def NULL_not_found(object: any = no_arg) -> int:
+    if object is no_arg:
+        return None
     if object is None:
         print("Nothing:", object, type(object))
     elif isinstance(object, float) and object != object:

@@ -1,5 +1,7 @@
-from curses.ascii import islower, isupper, ispunct, isspace, isdigit
 from sys import argv
+
+
+PUNCTUATION_CHARS = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
 
 
 def str_describe(str):
@@ -12,19 +14,12 @@ def str_describe(str):
     :type str: str
     :return: None
     """
-
-    upper_chars = sum(1 for c in str if isupper(c))
-    lower_chars = sum(1 for c in str if islower(c))
-    punct_chars = sum(1 for c in str if ispunct(c))
-    spaces = sum(1 for c in str if isspace(c))
-    digits = sum(1 for c in str if isdigit(c))
-
     print(f"The text contains {len(str)} characters:")
-    print(upper_chars, "upper letters")
-    print(lower_chars, "lower letters")
-    print(punct_chars, "punctuation marks")
-    print(spaces, "spaces")
-    print(digits, "digits")
+    print(sum(1 for c in str if c.isupper()), "upper letters")
+    print(sum(1 for c in str if c.islower()), "lower letters")
+    print(sum(1 for c in str if c in PUNCTUATION_CHARS), "punctuation marks")
+    print(sum(1 for c in str if c.isspace()), "spaces")
+    print(sum(1 for c in str if c.isdigit()), "digits")
 
 
 def main():
@@ -38,18 +33,18 @@ def main():
     """
 
     try:
-        assert len(argv) <= 2, "Too much arguments, try with one or zero"
+        if len(argv) > 2:
+            raise AssertionError("Too much arguments, try with one or zero")
         if len(argv) == 1:
-            str_describe(input("What is the text to count?\n"))
+            str_describe(input("What is the text to count?\n") + "\n")
         else:
             str_describe(argv[1])
     except KeyboardInterrupt:
         pass
     except EOFError:
         pass
-    except AssertionError as error:
-        print(error)
-        exit(1)
+    except AssertionError as e:
+        print(f"{type(e).__name__}: {e}")
 
 
 if __name__ == "__main__":

@@ -7,6 +7,6 @@ since = now - years_ago
 seconds_since = since.total_seconds()
 
 print(f"Seconds since {years_ago.strftime("%B %d, %Y")}"
-      f": {"{:,.3f}".format(seconds_since)}"
-      f" or {"{:,.2e}".format(seconds_since)} in scientific notation")
+      f": {seconds_since:,.3f}"
+      f" or {seconds_since:,.2e} in scientific notation")
 print(now.strftime("%b %d %Y"))

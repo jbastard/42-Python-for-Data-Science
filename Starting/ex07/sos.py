@@ -26,11 +26,13 @@ def main():
 
     try:
         if len(argv) != 2:
-            raise AssertionError("wrong number of arguments")
+            raise AssertionError("the arguments are bad")
         S = argv[1].upper()
+
         if not all(c in MORSE_DICT for c in S):
-            raise TypeError("the arguments are bad")
+            raise AssertionError("the arguments are bad")
         print(*(MORSE_DICT[c] for c in S), end='')
+
     except Exception as error:
         print(f"{type(error).__name__}: {error}")
 
