@@ -18,8 +18,9 @@ def ft_load(path: str):
     """
     try:
         if not isinstance(path, str):
-            raise TypeError(f"Path need to be a string,"
-                            f" got {type(path)} instead")
+            raise TypeError(f"Path need to be a string, "
+                            f"got {type(path)} instead")
+
         if not os.path.isfile(path):
             raise FileNotFoundError(f"Image not found: {path}")
 
@@ -32,4 +33,5 @@ def ft_load(path: str):
         print(f"The shape of image is: {arr.shape}")
     except Exception as e:
         print(f"{type(e).__name__}: {e}")
+        return None
     return arr

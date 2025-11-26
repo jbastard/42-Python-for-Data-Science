@@ -15,5 +15,9 @@ print(apply_limit(bmi, 26), "\n")
 height = [2.71, 1.15, 1.23]
 weight = [165.3, 38.4]
 bmi = give_bmi(height, weight)
+print(bmi, type(bmi), "\n")
+
+height = "TEST"
+weight = [165.3, 38.4]
+bmi = give_bmi(height, weight)
 print(bmi, type(bmi))
-print(apply_limit(bmi, 26))
