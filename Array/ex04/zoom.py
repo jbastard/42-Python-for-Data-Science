@@ -1,9 +1,3 @@
-from PIL import UnidentifiedImageError, Image
-import matplotlib.pyplot as plt
-import numpy as np
-from load_image import ft_load
-
-
 def _validate_range(start, stop, max_val, name):
     """Vérifie que start < stop et que les indices sont dans [0, max_val].
     Lève ValueError avec un message explicite si la vérification échoue.
@@ -69,27 +63,3 @@ def zoom(arr_img, x, y):
     print(f"New shape after slicing: {new_arr.shape}")
 
     return new_arr
-
-
-def main():
-    try:
-        arr_img = ft_load("animal.jpeg")
-        if arr_img is None:
-            raise UnidentifiedImageError("Unable to load {animal.jpeg}")
-        print(arr_img[:2])
-        zoom_array = zoom(arr_img, (500, 800), (150, 450))
-        print(zoom_array[:2])
-
-        zoomed_image = Image.fromarray(np.asarray(zoom_array))
-        grayscale_img = zoomed_image.convert("L")
-
-        plt.imshow(grayscale_img, cmap='gray')
-        plt.title("Zoomed Image")
-        plt.axis('on')
-        plt.show()
-    except Exception as e:
-        print(f"{type(e).__name__}: {e}")
-
-
-if __name__ == "__main__":
-    main()
